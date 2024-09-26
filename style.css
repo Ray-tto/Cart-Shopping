@@ -1,11 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
 body{
     background-color: #E3E7E8;
     font-family: system-ui;
+    margin: 0;
 }
 
 .container{
-    width: 1000px;
+    width: 94%;
+    max-width: 1000px;
     margin: auto;
+    padding: 0 15px;
     transform: 0.5s;
 }
 
@@ -23,6 +30,7 @@ header .shopping{
 header .shopping .material-symbols-outlined{
     width: 50px;
     cursor: pointer;
+    font-size: 40px;
 }
 
 header .shopping span{
@@ -79,7 +87,7 @@ header .shopping span{
     position: fixed;
     top: 0;
     left: 100%;
-    width: 500px;
+    width: 520px;
     background-color: #453E3B;
     height: 100vh;
     transition: 0.5s;
@@ -153,4 +161,44 @@ header .shopping span{
 
 .listCard .count{
     margin: 0 10px;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas pequenas */
+    }
+
+    header {
+        grid-template-columns: 1fr 40px; /* Ajuste na largura do ícone do carrinho */
+    }
+
+    .card {
+        max-width: 100%; /* Aumenta a largura da card para caber em telas pequenas */
+        left: 100%;
+    }
+
+    .card.active {
+        left: 10%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        width: 100%; /* Mantém 100% da largura */
+        left: 0; /* Começa na posição esquerda */
+        transform: translateX(100%); /* Inicia fora da tela */
+    }
+
+    .active .card {
+        left: calc(100% - 750px);
+    }
+    
+    .active .container {
+        transform: translateY(200px); /* Ajuste para o espaço da página */
+    }
 }
